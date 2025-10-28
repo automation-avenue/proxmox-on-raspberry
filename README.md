@@ -45,6 +45,9 @@ iface vmbr0 inet manual
     bridge-stp off
     bridge-fd 0
 ```
+You can also run `cat /etc/apt/sources.list.d/pxvirt-sources.list` and you should see there this line: <br />
+`deb  https://mirrors.lierfang.com/pxcloud/pxvirt $VERSION_CODENAME main` <br />
+where the `$VERSION_CODENAME` will be replaced with bookworm or trixie depending on debian version you are running. <br />
 
 ## PXVIRT installation process <br />
 Just run `apt update` and then: <br />
