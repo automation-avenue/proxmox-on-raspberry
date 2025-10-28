@@ -26,6 +26,7 @@ Proxmox requires a root password when you log on to it and by default Raspberry 
 You need to create one by running `sudo passwd root` and then type your password twice to get it configured. <br />
 Check your current interfaces with `ip address` command, see if you have valid ip address and on what interface. <br />
 Check your current configuration by running `cat /etc/network/interfaces` <br />
+Check current entries in `/etc/hosts` by running `cat /etc/hosts` command. <br />
 
 ## Now run the pxvirt preparation script included <br />
 Simply git clone the script or even copy-paste from here and remember to `chmod +x` . <br />
@@ -48,6 +49,7 @@ iface vmbr0 inet manual
 You can also run `cat /etc/apt/sources.list.d/pxvirt-sources.list` and you should see there this line: <br />
 `deb  https://mirrors.lierfang.com/pxcloud/pxvirt $VERSION_CODENAME main` <br />
 where the `$VERSION_CODENAME` will be replaced with bookworm or trixie depending on debian version you are running. <br />
+Check again hosts file by running `cat /etc/hosts` command and see if you have ip pointing to raspberrypi host <br />
 
 ## PXVIRT installation process <br />
 Just run `apt update` and then: <br />
@@ -56,3 +58,7 @@ This process might take over 10 minutes and you might see screen going off and o
 Once its completed - you should be able to access Proxmox from any device on your network by going to: <br />
 https://<vmbr0_ip_address>:8006 <br />
 
+## Mounting NAS location to Raspberry <br />
+Not related to the process above, but if you want to mount NAS to Raspberry, just <br />
+create folder like `mkdir -p /mnt/marek` and run that: <br />
+`mount -t cifs -o username=marek //192.168.1.225/Shared /mnt/marek/`
